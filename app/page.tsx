@@ -81,47 +81,47 @@ export default function Landing() {
         <div className="absolute top-1/2 -right-40 h-[400px] w-[400px] rounded-full bg-violet-500/8 blur-[100px]" />
       </div>
 
-      <div className="relative mx-auto max-w-5xl px-6 py-20">
+      <div className="relative mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-20">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-clinical-500/30 bg-clinical-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-clinical-400">
-          <span className="h-1.5 w-1.5 rounded-full bg-clinical-400 animate-pulse-slow" />
-          MEDCARE · HE-05
+        <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-clinical-500/30 bg-clinical-500/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest text-clinical-400 sm:px-4 sm:text-xs">
+          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-clinical-400 animate-pulse-slow" />
+          <span className="truncate">MEDCARE · HE-05</span>
         </div>
 
         {/* Hero */}
-        <h1 className="mt-6 max-w-3xl text-5xl font-black leading-[1.08] tracking-tight text-white md:text-7xl">
+        <h1 className="mt-5 max-w-3xl text-4xl font-black leading-[1.1] tracking-tight text-white sm:mt-6 sm:text-5xl md:text-7xl md:leading-[1.08]">
           Turn fragmented{" "}
           <span className="bg-gradient-to-r from-clinical-400 to-clinical-300 bg-clip-text text-transparent">
             medical records
           </span>{" "}
           into one patient journey.
         </h1>
-        <p className="mt-5 max-w-xl text-lg text-slate-400 leading-relaxed">
+        <p className="mt-5 max-w-xl text-base text-slate-400 leading-relaxed sm:text-lg">
           Evidence-backed timeline · 30-second doctor cockpit · patient-controlled sharing · audited break-glass access.
         </p>
 
         {/* CTAs */}
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link href="/signup" className="btn-primary text-base px-7 py-3">
+        <div className="mt-8 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap">
+          <Link href="/signup" className="btn-primary justify-center px-7 py-3 text-center text-base">
             Get Started
           </Link>
-          <Link href="/signin?demo=patient" className="btn-ghost text-base px-7 py-3">
+          <Link href="/signin?demo=patient" className="btn-ghost justify-center px-7 py-3 text-center text-base">
             Patient Demo
           </Link>
-          <Link href="/signin?demo=doctor" className="btn-ghost text-base px-7 py-3">
+          <Link href="/signin?demo=doctor" className="btn-ghost justify-center px-7 py-3 text-center text-base">
             Doctor Portal
           </Link>
         </div>
 
         {/* Demo hint */}
-        <p className="mt-4 text-xs text-slate-600">
+        <p className="mt-4 break-words text-xs leading-relaxed text-slate-600">
           Demo: patient@demo.medcare · doctor@demo.medcare · password demo1234
         </p>
 
         {/* Feature cards */}
-        <div className="mt-16 grid gap-4 md:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3">
           {features.map(({ icon, title, desc, color }) => (
-            <div key={title} className="glass-card p-6 animate-fade-in">
+            <div key={title} className="glass-card p-5 sm:p-6 animate-fade-in">
               <span className={`text-2xl ${color}`}>{icon}</span>
               <p className="mt-3 font-bold text-white">{title}</p>
               <p className="mt-1.5 text-sm text-slate-400 leading-relaxed">{desc}</p>
@@ -130,26 +130,26 @@ export default function Landing() {
         </div>
 
         {/* Pictures gallery */}
-        <section className="mt-16">
-          <h2 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
+        <section className="mt-12 sm:mt-16">
+          <h2 className="text-xl font-extrabold tracking-tight text-white sm:text-2xl md:text-3xl">
             See MEDSCOPE-AI in action
           </h2>
           <p className="mt-2 max-w-xl text-sm text-slate-400">
             Illustrative stock photos showing how records become a clear
             patient journey.
           </p>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {GALLERY.map((g) => (
               <figure key={g.title} className="glass overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={g.src}
                   alt={g.alt}
-                  className="h-48 w-full object-cover"
+                  className="h-40 w-full object-cover sm:h-48"
                   loading="lazy"
                   referrerPolicy="no-referrer"
                 />
-                <figcaption className="px-5 py-4">
+                <figcaption className="px-4 py-3 sm:px-5 sm:py-4">
                   <p className="font-bold text-white">{g.title}</p>
                   <p className="mt-1 text-sm text-slate-400">{g.desc}</p>
                 </figcaption>
@@ -159,22 +159,22 @@ export default function Landing() {
         </section>
 
         {/* About-this-photo section */}
-        <section className="mt-16 grid items-center gap-8 md:grid-cols-2">
+        <section className="mt-12 grid items-center gap-6 sm:mt-16 sm:gap-8 md:grid-cols-2">
           <figure className="glass overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={ABOUT_PHOTO.src}
               alt={ABOUT_PHOTO.alt}
-              className="h-64 w-full object-cover md:h-80"
+              className="h-52 w-full object-cover sm:h-64 md:h-80"
               loading="lazy"
               referrerPolicy="no-referrer"
             />
-            <figcaption className="border-t border-white/10 px-5 py-3 text-xs leading-relaxed text-slate-400">
+            <figcaption className="break-words border-t border-white/10 px-4 py-3 text-xs leading-relaxed text-slate-400 sm:px-5">
               {ABOUT_PHOTO.caption}
             </figcaption>
           </figure>
           <div>
-            <h2 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
+            <h2 className="text-xl font-extrabold tracking-tight text-white sm:text-2xl md:text-3xl">
               Built around evidence, designed for care.
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-slate-400">
@@ -201,16 +201,16 @@ export default function Landing() {
         </div>
 
         {/* How it works */}
-        <section className="mt-16">
-          <h2 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
+        <section className="mt-12 sm:mt-16">
+          <h2 className="text-xl font-extrabold tracking-tight text-white sm:text-2xl md:text-3xl">
             How MEDSCOPE-AI works
           </h2>
           <p className="mt-2 max-w-xl text-sm text-slate-400">
             From fragmented uploads to one traceable, shareable patient journey.
           </p>
-          <div className="mt-6 grid gap-4 md:grid-cols-4">
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map((s) => (
-              <div key={s.n} className="glass-card p-6">
+              <div key={s.n} className="glass-card p-5 sm:p-6">
                 <p className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-clinical-500/20 text-sm font-black text-clinical-300">
                   {s.n}
                 </p>
@@ -222,8 +222,8 @@ export default function Landing() {
         </section>
 
         {/* Safety + FAQ */}
-        <section className="mt-16 grid gap-4 md:grid-cols-2">
-          <div className="glass p-6">
+        <section className="mt-12 grid gap-4 sm:mt-16 md:grid-cols-2">
+          <div className="glass p-5 sm:p-6">
             <p className="font-bold text-white">Safe by design</p>
             <ul className="mt-3 space-y-2 text-sm text-slate-400">
               <li>Every fact links to document + page + exact quote.</li>
@@ -232,9 +232,9 @@ export default function Landing() {
               <li>Emergency access needs reason + OTP and is time-boxed.</li>
             </ul>
           </div>
-          <div className="glass p-6">
+          <div className="glass p-5 sm:p-6">
             <p className="font-bold text-white">FAQ</p>
-            <div className="mt-3 space-y-3 text-sm text-slate-400">
+            <div className="mt-3 space-y-3 text-sm leading-relaxed text-slate-400">
               <p><span className="font-semibold text-slate-200">Is this medical advice? </span>No — decision support only, organized from your records.</p>
               <p><span className="font-semibold text-slate-200">Is my data real? </span>No — this demo uses synthetic records only.</p>
               <p><span className="font-semibold text-slate-200">Who can see my data? </span>Only you, plus doctors you share with or audited emergency access.</p>
@@ -243,14 +243,14 @@ export default function Landing() {
         </section>
 
         {/* Bottom CTA */}
-        <section className="glass mt-16 flex flex-col items-start gap-4 p-8 md:flex-row md:items-center md:justify-between">
+        <section className="glass mt-12 flex flex-col items-stretch gap-4 p-5 sm:mt-16 sm:p-8 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="text-xl font-extrabold text-white">Ready to see your journey clearly?</p>
+            <p className="text-lg font-extrabold text-white sm:text-xl">Ready to see your journey clearly?</p>
             <p className="mt-1 text-sm text-slate-400">Try the patient demo or open the doctor cockpit.</p>
           </div>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/signin?demo=patient" className="btn-primary">Patient Demo</Link>
-            <Link href="/signin?demo=doctor" className="btn-ghost">Doctor Portal</Link>
+          <div className="grid grid-cols-1 gap-3 sm:flex sm:flex-wrap">
+            <Link href="/signin?demo=patient" className="btn-primary justify-center text-center">Patient Demo</Link>
+            <Link href="/signin?demo=doctor" className="btn-ghost justify-center text-center">Doctor Portal</Link>
           </div>
         </section>
 

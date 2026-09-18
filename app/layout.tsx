@@ -4,6 +4,13 @@ export const metadata: Metadata = {
   title: "MEDCARE — Patient Journey",
   description: "Turn fragmented medical records into one understandable patient journey.",
 };
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#0f1117",
+};
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark">
