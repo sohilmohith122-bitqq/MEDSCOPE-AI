@@ -104,7 +104,7 @@ export default function Journey() {
           ) : (
             <div className="glass-sm p-5 text-center">
               <p className="text-2xl text-slate-700 mb-2">◇</p>
-              <p className="text-sm text-slate-500">Select an event to see why it's here — document, page, exact quote.</p>
+              <p className="text-sm text-slate-500">Select an event to see why it&apos;s here — document, page, exact quote.</p>
             </div>
           )}
 

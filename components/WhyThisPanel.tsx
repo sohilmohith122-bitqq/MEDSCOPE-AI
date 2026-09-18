@@ -2,7 +2,7 @@ export function WhyThisPanel({ edge }: { edge: { type: string; evidenceQuote: st
   return (
     <div className="glass-sm p-4 animate-slide-up">
       <p className="section-title mb-2">{edge.type}</p>
-      <p className="text-sm italic text-slate-400">"{edge.evidenceQuote}"</p>
+      <p className="text-sm italic text-slate-400">&quot;{edge.evidenceQuote}&quot;</p>
       {edge.derivedRule && (
         <p className="mt-2 text-xs text-slate-600">
           Rule: {edge.derivedRule}{" "}

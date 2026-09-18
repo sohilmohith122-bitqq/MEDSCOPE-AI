@@ -40,7 +40,7 @@ export function EventCard({ event }: {
         {" · "}p.{event.sourcePage}
       </p>
       <p className="mt-2.5 line-clamp-2 text-sm italic text-slate-400 leading-relaxed">
-        "{event.evidenceQuote}"
+        &quot;{event.evidenceQuote}&quot;
       </p>
     </div>
   );

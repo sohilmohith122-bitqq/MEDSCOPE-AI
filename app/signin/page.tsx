@@ -1,9 +1,9 @@
 "use client";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-export default function SignIn() {
+function SignInForm() {
   const r = useRouter();
   const params = useSearchParams();
   const demo = params.get("demo");
@@ -108,5 +108,19 @@ export default function SignIn() {
         </p>
       </div>
     </main>
+  );
+}
+
+export default function SignIn() {
+  return (
+    <Suspense
+      fallback={
+        <main className="flex min-h-screen items-center justify-center px-4">
+          <span className="text-sm text-slate-500">Loading…</span>
+        </main>
+      }
+    >
+      <SignInForm />
+    </Suspense>
   );
 }

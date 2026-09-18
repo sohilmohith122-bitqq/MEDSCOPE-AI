@@ -27,7 +27,7 @@ export function EvidencePanel({
         </span>
       </div>
       <p className="mt-4 section-title">Exact extracted evidence</p>
-      <blockquote className="evidence-quote mt-2">"{event.evidenceQuote}"</blockquote>
+      <blockquote className="evidence-quote mt-2">&quot;{event.evidenceQuote}&quot;</blockquote>
       <p className="mt-2 font-mono text-xs text-slate-600">
         doc {event.sourceDocumentId.slice(0, 8)}… · p.{event.sourcePage}
       </p>
