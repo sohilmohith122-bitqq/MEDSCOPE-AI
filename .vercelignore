@@ -1,0 +1,22 @@
+# Local-only artefacts — never upload these to Vercel
+.pg/
+storage/
+tests/
+docs/__pycache__/
+*.zip
+out1.txt
+out2.txt
+query
+.env
+.env.bak
+extract_pg.py
+setup_db.sql
+.pg/e2e.ps1
+.pg/e2e.mjs
+.pg/e2e_patient.ps1
+.pg/smoke.ps1
+.pg/push-both.ps1
+.pg/*.sql
+.pg/data/
+.pg/extract/
+.pg/node20/

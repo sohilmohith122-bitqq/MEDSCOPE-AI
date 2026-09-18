@@ -1,7 +1,21 @@
 import { promises as fs } from "fs";
+import os from "os";
 import path from "path";
 import crypto from "crypto";
-export function storageDir() { return path.join(process.cwd(), "storage", "documents"); }
+
+/**
+ * Storage root.
+ * - `STORAGE_DIR` wins when set (use a mounted volume / writable path).
+ * - On Vercel the deployment filesystem is read-only except `/tmp`, so fall back
+ *   to a temporary directory (ephemeral: originals are lost after the instance
+ *   recycles — fine for the synthetic demo, see README limitations).
+ * - Locally keeps the original `<repo>/storage/documents` location.
+ */
+export function storageDir() {
+  if (process.env.STORAGE_DIR) return process.env.STORAGE_DIR;
+  if (process.env.VERCEL) return path.join(os.tmpdir(), "medcare-storage", "documents");
+  return path.join(process.cwd(), "storage", "documents");
+}
 export async function saveOriginal(bytes: Buffer, key: string) {
   const dir = storageDir();
   await fs.mkdir(dir, { recursive: true });
