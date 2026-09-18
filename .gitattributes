@@ -1,0 +1,10 @@
+# Normalize line endings for text, never touch binary assets
+* text=auto
+
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.xlsx binary
+*.zip  binary
