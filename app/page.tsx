@@ -28,6 +28,29 @@ const GALLERY = [
   },
 ];
 
+const STEPS = [
+  {
+    n: "1",
+    title: "Upload records",
+    desc: "PDFs and scans are stored immutably with SHA-256 deduplication.",
+  },
+  {
+    n: "2",
+    title: "AI extracts evidence",
+    desc: "Classify + extract with faithful date precision and exact quotes.",
+  },
+  {
+    n: "3",
+    title: "Timeline + conflicts",
+    desc: "Episodes, gaps and dosage conflicts surface for review.",
+  },
+  {
+    n: "4",
+    title: "Share safely",
+    desc: "Expiring scoped shares, audited break-glass, grounded Q&A.",
+  },
+];
+
 const features = [
   {
     icon: "⬡",
@@ -176,6 +199,60 @@ export default function Landing() {
             </div>
           ))}
         </div>
+
+        {/* How it works */}
+        <section className="mt-16">
+          <h2 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
+            How MEDSCOPE-AI works
+          </h2>
+          <p className="mt-2 max-w-xl text-sm text-slate-400">
+            From fragmented uploads to one traceable, shareable patient journey.
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-4">
+            {STEPS.map((s) => (
+              <div key={s.n} className="glass-card p-6">
+                <p className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-clinical-500/20 text-sm font-black text-clinical-300">
+                  {s.n}
+                </p>
+                <p className="mt-3 font-bold text-white">{s.title}</p>
+                <p className="mt-1.5 text-sm text-slate-400 leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Safety + FAQ */}
+        <section className="mt-16 grid gap-4 md:grid-cols-2">
+          <div className="glass p-6">
+            <p className="font-bold text-white">Safe by design</p>
+            <ul className="mt-3 space-y-2 text-sm text-slate-400">
+              <li>Every fact links to document + page + exact quote.</li>
+              <li>Conflicts are shown, never silently resolved.</li>
+              <li>Sharing is expiring, scoped, revocable and audited.</li>
+              <li>Emergency access needs reason + OTP and is time-boxed.</li>
+            </ul>
+          </div>
+          <div className="glass p-6">
+            <p className="font-bold text-white">FAQ</p>
+            <div className="mt-3 space-y-3 text-sm text-slate-400">
+              <p><span className="font-semibold text-slate-200">Is this medical advice? </span>No — decision support only, organized from your records.</p>
+              <p><span className="font-semibold text-slate-200">Is my data real? </span>No — this demo uses synthetic records only.</p>
+              <p><span className="font-semibold text-slate-200">Who can see my data? </span>Only you, plus doctors you share with or audited emergency access.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Bottom CTA */}
+        <section className="glass mt-16 flex flex-col items-start gap-4 p-8 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="text-xl font-extrabold text-white">Ready to see your journey clearly?</p>
+            <p className="mt-1 text-sm text-slate-400">Try the patient demo or open the doctor cockpit.</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/signin?demo=patient" className="btn-primary">Patient Demo</Link>
+            <Link href="/signin?demo=doctor" className="btn-ghost">Doctor Portal</Link>
+          </div>
+        </section>
 
         <p className="mt-12 text-xs text-slate-600">
           MEDCARE uses controlled, authenticated, auditable access. Synthetic demo data only.
