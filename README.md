@@ -1,10 +1,8 @@
 <div align="center">
 
-# 🏥 MEDSCOPE-AI
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0e9fa4&height=200&section=header&text=%F0%9F%8F%A5%20MEDSCOPE-AI&fontSize=54&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Medical%20Document%20Intelligence%20%26%20Patient%20Timeline&descAlignY=62&descSize=18" alt="MEDSCOPE-AI 3D wave banner" width="100%" />
 
-### Medical Document Intelligence & Patient Timeline Platform
-
-**Turn fragmented medical records into one understandable, evidence-backed patient journey.**
+### Turn fragmented medical records into one understandable, evidence-backed patient journey.
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -12,16 +10,19 @@
 [![Prisma](https://img.shields.io/badge/Prisma-5.22-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://www.prisma.io/)
 [![Tailwind](https://img.shields.io/badge/Tailwind-3.4-38BDF8?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-> ⚠️ **AI-organized from the patient's records — not medical advice.**
-> Decision support only. Synthetic demo data. Every fact cites its source.
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=16&duration=2200&pause=800&color=2CBFC4&center=true&vCenter=true&width=700&lines=%E2%9A%A0%EF%B8%8F+AI-organized+from+your+records+%E2%80%94+not+medical+advice;Every+fact+cites+document+%2B+page+%2B+quote;Upload+%E2%86%92+Timeline+%E2%86%92+CareShare+%2B+Break-Glass" alt="typing status lines" />
 
-[Features](#-key-features) · [Live Demo](#-demo-credentials) · [Quickstart](#-quickstart) · [Architecture](#-architecture) · [API](#-api-reference) · [Testing](#-testing--quality-gates)
+[Features](#-key-features) · [Live Demo](#-demo-credentials) · [Quickstart](#-quickstart) · [Architecture](#%EF%B8%8F-architecture) · [API](#-api-reference) · [Testing](#-testing--quality-gates)
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=6&section=header" width="100%" />
 
 </div>
 
 ---
 
 ## 📖 Overview
+
+<img align="right" src="https://cdn3d.iconscout.com/3d/premium/thumb/medical-report-3d-illustration-download-in-png-blend-fbx-gltf-file-formats--healthcare-hospital-document-checkup-pack-illustrations-7321946.png?f=webp" width="220" alt="3D medical report illustration" />
 
 **MEDSCOPE-AI** (formerly MEDCARE, HE-05) is a full-stack clinical document intelligence platform. Patients upload PDFs and scans; the system classifies, extracts precision-faithful clinical events, and assembles a **traceable timeline** with episodes, relationship graphs, conflicts, gaps, and What-Changed snapshots. Doctors get a **30-second cockpit** over scoped data. Sharing is **patient-controlled** (expiring, scoped, revocable) with **audited emergency break-glass** and a **grounded History AI** that cites evidence and refuses medical advice.
 
@@ -241,6 +242,8 @@ Keep invariants I1–I10 green; include E2E output in PRs.
 <div align="center">
 
 **Built with evidence-first principles · Every fact cites its source** 🏥
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0e9fa4&height=120&section=footer" width="100%" alt="3D wave footer" />
 
 </div>
 
