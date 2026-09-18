@@ -21,5 +21,20 @@ export const ShareService = {
     if (!s || s.revoked || s.expiresAt < new Date()) return null;
     return s;
   },
-  async revoke(id: string) { return prisma.shareSession.update({ where: { id }, data: { revoked: true } }); },
+  /**
+   * Revoke a share link.
+   * - Scoped to the owning patient when `patientId` is supplied, so a caller can
+   *   never revoke somebody else's link (IDOR) and foreign ids stay indistinguishable
+   *   from unknown ones.
+   * - `updateMany` instead of `update`: an unknown id is a no-op returning false
+   *   rather than a thrown P2025 that would surface as a 500.
+   * Returns true when a matching share was marked revoked (idempotent).
+   */
+  async revoke(id: string, patientId?: string) {
+    const { count } = await prisma.shareSession.updateMany({
+      where: { id, ...(patientId ? { patientId } : {}) },
+      data: { revoked: true },
+    });
+    return count > 0;
+  },
 };

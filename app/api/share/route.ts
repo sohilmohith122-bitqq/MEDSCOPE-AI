@@ -30,7 +30,11 @@ export async function DELETE(req: Request) {
   if (!session || session.role !== "PATIENT") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   const id = new URL(req.url).searchParams.get("id");
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
-  await ShareService.revoke(id);
+  const patientId = patientIdFor(session as never);
+  if (!patientId) return NextResponse.json({ error: "No patient profile" }, { status: 400 });
+  // Scoped revoke: only the owning patient can revoke, unknown/foreign ids -> 404 (never 500).
+  const revoked = await ShareService.revoke(id, patientId);
+  if (!revoked) return NextResponse.json({ error: "Share not found" }, { status: 404 });
   await audit({ actorId: session.id, actorRole: session.role, action: "REVOKE", targetType: "ShareSession", targetId: id });
   return NextResponse.json({ ok: true });
 }
