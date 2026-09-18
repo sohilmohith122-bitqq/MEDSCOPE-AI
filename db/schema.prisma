@@ -1,0 +1,196 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id           String          @id @default(cuid())
+  email        String          @unique
+  passwordHash String
+  role         String
+  createdAt    DateTime        @default(now())
+  patientProfile PatientProfile?
+  doctorProfile  DoctorProfile?
+  auditLogs    AuditLog[]
+}
+
+model PatientProfile {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  fullName  String
+  dob       String?
+  gender    String?
+  createdAt DateTime @default(now())
+}
+
+model DoctorProfile {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  fullName  String
+  specialty String?
+  createdAt DateTime @default(now())
+}
+
+model PatientDoctor {
+  id        String   @id @default(cuid())
+  patientId String
+  doctorId  String
+  createdAt DateTime @default(now())
+
+  @@unique([patientId, doctorId])
+}
+
+model Document {
+  id            String         @id @default(cuid())
+  patientId     String
+  fileName      String
+  mimeType      String
+  sizeBytes     Int
+  storageKey    String
+  sha256        String
+  docType       String         @default("OTHER")
+  status        String         @default("UPLOADED")
+  failureReason String?
+  uploadedAt    DateTime       @default(now())
+  pages         DocumentPage[]
+  events        ClinicalEvent[]
+}
+
+model DocumentPage {
+  id          String   @id @default(cuid())
+  documentId  String
+  document    Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  pageNumber  Int
+  textExcerpt String   @default("")
+  createdAt   DateTime @default(now())
+}
+
+model ClinicalEvent {
+  id                 String         @id @default(cuid())
+  patientId          String
+  eventType          String
+  title              String
+  description        String         @default("")
+  eventDate          DateTime?
+  eventDateStart     DateTime?
+  eventDateEnd       DateTime?
+  datePrecision      String         @default("UNKNOWN")
+  sourceDocumentId   String
+  sourcePage         Int            @default(1)
+  evidenceStatus     String         @default("DOCUMENTED")
+  confidence         Float          @default(0.5)
+  evidenceQuote      String         @default("")
+  extractedEntities  Json           @default("{}")
+  metadata           Json           @default("{}")
+  createdAt          DateTime       @default(now())
+  document           Document       @relation(fields: [sourceDocumentId], references: [id])
+  evidence           EvidenceItem[]
+}
+
+model EventRelationship {
+  id               String   @id @default(cuid())
+  patientId        String
+  fromEventId      String
+  toEventId        String
+  type             String
+  evidenceQuote    String   @default("")
+  sourceDocumentId String?
+  sourcePage       Int?
+  derivedRule      String?
+  createdAt        DateTime @default(now())
+}
+
+model EvidenceItem {
+  id         String        @id @default(cuid())
+  eventId    String
+  event      ClinicalEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  documentId String
+  page       Int           @default(1)
+  quote      String
+  createdAt  DateTime      @default(now())
+}
+
+model ClinicalEpisode {
+  id        String   @id @default(cuid())
+  patientId String
+  title     String
+  summary   String   @default("")
+  startDate DateTime?
+  endDate   DateTime?
+  eventIds  Json     @default("[]")
+  createdAt DateTime @default(now())
+}
+
+model PatientStateSnapshot {
+  id        String   @id @default(cuid())
+  patientId String
+  label     String
+  data      Json
+  createdAt DateTime @default(now())
+}
+
+model Conflict {
+  id          String   @id @default(cuid())
+  patientId   String
+  kind        String
+  title       String
+  description String   @default("")
+  eventIds    Json     @default("[]")
+  status      String   @default("OPEN")
+  createdAt   DateTime @default(now())
+}
+
+model TimelineGap {
+  id            String   @id @default(cuid())
+  patientId     String
+  title         String
+  description   String   @default("")
+  afterEventId  String?
+  beforeEventId String?
+  createdAt     DateTime @default(now())
+}
+
+model ShareSession {
+  id          String   @id @default(cuid())
+  patientId   String
+  doctorId    String?
+  tokenHash   String   @unique
+  scopes      Json     @default("[]")
+  permission  String   @default("VIEW_ONLY")
+  documentIds Json     @default("[]")
+  expiresAt   DateTime
+  revoked     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model EmergencyAccessSession {
+  id                String   @id @default(cuid())
+  patientId         String
+  doctorId          String
+  reason            String
+  otpVerified       Boolean  @default(false)
+  expiresAt         DateTime
+  resourcesAccessed Json     @default("[]")
+  createdAt         DateTime @default(now())
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String?
+  actorRole  String?
+  action     String
+  targetType String?
+  targetId   String?
+  accessType String?
+  result     String   @default("OK")
+  meta       Json     @default("{}")
+  createdAt  DateTime @default(now())
+  actor      User?    @relation(fields: [actorId], references: [id])
+}

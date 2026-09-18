@@ -1,0 +1,9 @@
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname='medcare') THEN
+    CREATE ROLE medcare LOGIN PASSWORD 'medcare' SUPERUSER;
+  ELSE
+    ALTER ROLE medcare WITH LOGIN PASSWORD 'medcare' SUPERUSER;
+  END IF;
+END
+$$;

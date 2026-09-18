@@ -1,0 +1,41 @@
+# deps / build
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# env & secrets (never commit real .env)
+.env
+.env.bak
+.env.local
+.env*.local
+
+# prisma
+prisma/migrations/dev.db*
+
+# local document storage (uploaded PDFs live here)
+storage/
+storage/documents/
+
+# heavy local dev artefacts — Postgres binaries, zips, logs, live data dir
+# (>300 MB total, GitHub rejects >100 MB files)
+.pg/data/
+.pg/extract/
+.pg/node20/
+.pg/pg/
+.pg/*.zip
+.pg/logfile
+out1.txt
+out2.txt
+query
+out1.txt
+out2.txt
+query
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
