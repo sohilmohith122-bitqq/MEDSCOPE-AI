@@ -233,7 +233,10 @@ middleware.ts   /patient|/doctor → /signin without session
 | `14fab4a` | Docs: README rewritten as a professional guide (overview, stack, architecture, API, quickstart, testing, changelog) |
 | `38ccb2c` | Docs: removed the license section |
 | `3886805` | Docs: 3D README styling (wave banner, typing SVG, 3D illustration, wave footer) |
-| `pending` | Docs: PDF project guide — `docs/build_pdf.py` + `pdf_part_*.py` → `docs/MEDSCOPE-AI-Guide.pdf` (12 pages) |
+| `2896109` | Docs: PDF project guide — `docs/build_pdf.py` + `pdf_part_*.py` → `docs/MEDSCOPE-AI-Guide.pdf` (12 pages) |
+| `8bf8896` | Chore: `.gitattributes` — keep PDFs/images binary (no CRLF conversion) |
+| `f45ebe4` | Docs: deterministic PDF build (`rl_config.invariant`) so rebuilds are byte-identical |
+| `21e77ea` | Chore: `.pg/push-both.ps1` — push `main` to both GitHub remotes with auth hints |
 
 <!-- TAIL4 -->
 
