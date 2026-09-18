@@ -238,10 +238,6 @@ git commit -m "feat: describe change + E2E result"
 
 Keep invariants I1–I10 green; include E2E output in PRs.
 
-## 📄 License
-
-Private demo project — all rights reserved. Synthetic data only; not a medical device; not medical advice.
-
 <div align="center">
 
 **Built with evidence-first principles · Every fact cites its source** 🏥
