@@ -7,6 +7,11 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+# Reproducible output: fixed creation date + file id, so a rebuild is byte-identical
+# and never shows up as a spurious diff in git. Must be set before the build.
+from reportlab import rl_config
+rl_config.invariant = 1
+
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
 from reportlab.platypus import SimpleDocTemplate
