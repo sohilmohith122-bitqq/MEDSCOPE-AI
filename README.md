@@ -191,6 +191,19 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .pg/e2e.ps1
 
 ✅ **Last verified:** 33/33 E2E · `tsc` clean · `.pg/e2e.ps1` ends `DONE`.
 
+## 📘 PDF Project Guide
+
+A printable, self-contained guide to this project ships in the repo: **[`docs/MEDSCOPE-AI-Guide.pdf`](docs/MEDSCOPE-AI-Guide.pdf)** (12 pages, A4).
+
+It explains, in order: session changelog → tech stack → architecture (guard chain + layer table + module guide) → data model (all 16 Prisma models) → end-to-end flow (12 steps + invariants I1–I10) → API reference + response contract → setup & run + environment variables → testing & quality gates → project structure → limitations & roadmap.
+
+Regenerate it any time (content lives in `docs/pdf_part_*.py`):
+
+```powershell
+pip install reportlab
+python docs/build_pdf.py      # writes docs/MEDSCOPE-AI-Guide.pdf
+```
+
 <!-- TAIL3 -->
 
 ## 🗂️ Project Structure
@@ -217,7 +230,10 @@ middleware.ts   /patient|/doctor → /signin without session
 | `3a251f2` | Landing: About-this-photo section + 3-picture gallery |
 | `41f77fb` | Landing: How-it-works steps, Safe-by-design + FAQ, bottom CTA |
 | `6c0a4a8` | Landing: mobile responsiveness — fluid type, stacked CTAs, `sm`/`md` grids, 44 px touch targets |
-| `uncommitted` | README rewritten as professional guide (this file) + `.gitignore` dedupe fix |
+| `14fab4a` | Docs: README rewritten as a professional guide (overview, stack, architecture, API, quickstart, testing, changelog) |
+| `38ccb2c` | Docs: removed the license section |
+| `3886805` | Docs: 3D README styling (wave banner, typing SVG, 3D illustration, wave footer) |
+| `pending` | Docs: PDF project guide — `docs/build_pdf.py` + `pdf_part_*.py` → `docs/MEDSCOPE-AI-Guide.pdf` (12 pages) |
 
 <!-- TAIL4 -->
 
