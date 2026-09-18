@@ -29,9 +29,6 @@ storage/documents/
 out1.txt
 out2.txt
 query
-out1.txt
-out2.txt
-query
 
 # OS / editor
 .DS_Store
